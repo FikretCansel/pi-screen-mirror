@@ -1,0 +1,15 @@
+[Unit]
+# Hedef konum: /etc/systemd/system/tv-receiver.service
+Description=Receive screen stream over UDP and show on HDMI
+After=network-online.target sound.target
+Wants=network-online.target
+
+[Service]
+User=fikret
+SupplementaryGroups=video audio render input
+ExecStart=/home/fikret/tv-receiver.sh
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target
